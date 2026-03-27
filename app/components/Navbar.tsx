@@ -21,8 +21,8 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="navbar-logo" style={{
           width: '120px',
-          height: '36px',
-          backgroundColor: 'var(--primary)',
+          height: '40px',
+          backgroundColor: '#000',
           WebkitMaskImage: "url('/vineta.png')",
           maskImage: "url('/vineta.png')",
           WebkitMaskSize: 'contain',
