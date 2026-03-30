@@ -22,10 +22,11 @@ export default function ProductCard({ product }: ProductCardProps) {
                     alt={product.name}
                     fill
                     style={{ objectFit: "cover" }}
+                    className="product-image"
                 />
             </div>
             <div className="product-info">
-                <p className="product-name">{product.name}</p>
+                <h3 className="product-name">{product.name}</h3>
                 <div className="product-pricing">
                     <span className="product-price">{product.price}</span>
                     {product.originalPrice && (

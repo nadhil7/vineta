@@ -14,29 +14,36 @@ const navLinks = [
 
 export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <header className="navbar">
       <div className="navbar-inner">
         {/* Logo */}
-        <Link href="/" className="navbar-logo" style={{
-          width: '120px',
-          height: '40px',
-          backgroundColor: '#000',
-          WebkitMaskImage: "url('/vineta.png')",
-          maskImage: "url('/vineta.png')",
-          WebkitMaskSize: 'contain',
-          maskSize: 'contain',
-          WebkitMaskRepeat: 'no-repeat',
-          maskRepeat: 'no-repeat',
-          WebkitMaskPosition: 'left center'
-        }}>
+        <Link href="/" className="navbar-logo">
+          {/* Logo image defined in CSS */}
         </Link>
 
+        {/* Hamburger Menu Icon (Mobile Only) */}
+        <button
+          className="mobile-menu-toggle"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle Menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width="24" height="24">
+            <path strokeLinecap="round" strokeLinejoin="round" d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"} />
+          </svg>
+        </button>
+
         {/* Navigation Links */}
-        <nav className="navbar-links">
+        <nav className={`navbar-links ${isMobileMenuOpen ? 'navbar-links--open' : ''}`}>
           {navLinks.map((link) => (
-            <Link key={link.label} href={link.href} className="navbar-link">
+            <Link
+              key={link.label}
+              href={link.href}
+              className="navbar-link"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               {link.label}
             </Link>
           ))}
